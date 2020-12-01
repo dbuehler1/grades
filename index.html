@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="gradeStyle.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<fieldset>
+    <form id="gradeForm">
+        <legend>Grade Report</legend>
+        <label for="FirstName">First Name:</label>
+        <input type="text" id="FirstName"><br>
+        <label for="LastName">Last Name:</label>
+        <input type="text" id="LastName"><br>
+        <label for="ptsEarned">Points Earned</label>
+        <input type="number" id="ptsEarned"><br>
+        <label for="ptsPossible">Points Possible</label>
+        <input type="number" id="ptsPossible"><br>
+        <fieldset>
+            <legend>Grade Report</legend>
+            <p id = "FName"></p>
+            <p id = "LName"></p>
+            <p id = "AVG"></p>
+            <p id = "LetterGrade"></p>
+        </fieldset>
+
+
+
+        <button id = "submit" type="submit">Submit</button>
+
+    </form>
+</fieldset>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src = "grade.js"></script>
+</body>
+</html>
