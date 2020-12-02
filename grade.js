@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $("#gradeForm").submit(enterGrade);
+    $("#Display").click(displayStudents);
 
+    var entries = [];
     function enterGrade() {
         event.preventDefault();
         var firstName = $("#FirstName").val();
@@ -14,28 +16,59 @@ $(document).ready(function () {
             PTSE: pointsEarned,
             PTSP: pointsPossible
         };
+        entries.push(entry)
 
-        $("#FName").text("First Name: " + entry.FN);
-        $("#LName").text("Last Name: " + entry.LN);
-        $("#AVG").text("Grade Average: " + (entry.PTSE / entry.PTSP * 100) + "%");
-
-        var avg = entry.PTSE / entry.PTSP * 100
-        if(avg >= 90){
-            $("#LetterGrade").text("Grade: A");
-        }
-        else if(avg >= 80){
-            $("#LetterGrade").text("Grade: B");
-        }
-        else if(avg >= 70){
-            $("#LetterGrade").text("Grade: C");
-        }
-        else if(avg >= 60){
-            $("#LetterGrade").text("Grade: D");
-        }
-        else{
-            $("#LetterGrade").text("Grade: F");
-        }
     }
 
+    function displayStudents(){
+        for(var x = 0; x < entries.length; x++){
+            var newFName  = $("<p>");
+            $("#test").append(newFName);
+            newFName.attr("id", 'Fname${x}');
+            newFName.text("First Name: " + entries[x].FN);
+
+            var newLName  = $("<p>");
+            $("#test").append(newLName);
+            newLName.attr("id", 'Lname${x}');
+            newLName.text("Last Name: " + entries[x].LN);
+
+            var newAVG  = $("<p>");
+            $("#test").append(newAVG);
+            newAVG.attr("id", 'avg${x}');
+            newAVG.text("Grade Average: " + (entries[x].PTSE / entries[x].PTSP * 100).toFixed(2) + "%");
+
+            var avg = (entries[x].PTSE / entries[x].PTSP * 100).toFixed(2);
+
+            var newGrade  = $("<p>");
+            if(avg >= 90){
+                $("#test").append(newGrade);
+                newGrade.attr("id", 'Grade${x}');
+                newGrade.text("Grade: A");
+            }
+            else if(avg >= 80){
+
+                $("#test").append(newGrade);
+                newGrade.attr("id", 'Grade${x}');
+                newGrade.text("Grade: B");
+            }
+            else if(avg >= 70){
+                $("#test").append(newGrade);
+                newGrade.attr("id", 'Grade${x}');
+                newGrade.text("Grade: C");
+            }
+            else if(avg >= 60){
+                $("#test").append(newGrade);
+                newGrade.attr("id", 'Grade${x}');
+                newGrade.text("Grade: D");
+            }
+            else{
+                $("#test").append(newGrade);
+                newGrade.attr("id", 'Grade${x}');
+                newGrade.text("Grade: F");
+            }
+
+        }
+
+    }
 
 })
